@@ -1,4 +1,4 @@
-# Spotiviz
+# Spotivizzz
 
 Clément ZELTER et Gabriel ROULEAU
 
