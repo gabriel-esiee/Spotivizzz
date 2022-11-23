@@ -1,0 +1,28 @@
+/* 
+ * Style rules for the home page.
+*/
+
+.home {
+
+}
+
+.home .graph-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    background-color: lightgrey;
+    border-radius: var(--border-radius-medium);
+}
+
+.home .graph-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.home .graph-grid .world-map {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
