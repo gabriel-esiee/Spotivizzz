@@ -1,0 +1,19 @@
+/* 
+ * Style rules for common element of the dashboard.
+*/
+
+
+
+body {
+    /* Main CSS variables */
+    --primary-bg: #918BDC;
+    --primary-text: #00FFFC;
+
+    margin: 0;
+    padding: 0;
+}
+
+.large-container {
+    margin: 0;
+    padding: 10px 10vw;
+}

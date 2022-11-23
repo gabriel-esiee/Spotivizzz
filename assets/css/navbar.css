@@ -1,0 +1,10 @@
+/* 
+ * Style rules for the navigation bar.
+*/
+
+.navbar {
+    padding: 120px 0;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    text-align: center;
+}

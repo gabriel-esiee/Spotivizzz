@@ -2,6 +2,7 @@ from dash import html
 
 navbar = html.Div(
     [
-        html.H2(children="Navbar")
-    ]
+        html.H1(children="Spotivizzz")
+    ],
+    className="navbar"
 )
