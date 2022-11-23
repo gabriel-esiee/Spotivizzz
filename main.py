@@ -1,11 +1,17 @@
-# Run this app with `python main.py` and
-# visit http://127.0.0.1:8050/ in your web browser.
+from dash import Dash
+from src import app as my_app
 
-from src import fetch
-from src import dashboard
+app = Dash(
+    name = __name__,
+    use_pages = False, # use Dash pages
+    external_stylesheets = [],
+    suppress_callback_exceptions = True,
+    title = 'Spotivizzz'
+)
 
-datas = fetch.fetch_data()
-dashboard.build_main_layout(datas)
+app.layout = my_app.app_layout()
 
-if __name__ == '__main__':
-    dashboard.start()
+if __name__ == "__main__":
+    app.run_server(
+        debug = True
+    )
