@@ -2,10 +2,6 @@
  * Style rules for the home page.
 */
 
-.home {
-
-}
-
 .home .graph-container {
     position: relative;
     width: 100%;
@@ -20,6 +16,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
     grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 400px;
 }
 
 .home .graph-grid .world-map {
