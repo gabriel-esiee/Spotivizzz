@@ -9,7 +9,7 @@ app = Dash(
     title = 'Spotivizzz'
 )
 
-app.layout = my_app.app_layout()
+app.layout = my_app.app_layout(app)
 
 if __name__ == "__main__":
     app.run_server(
