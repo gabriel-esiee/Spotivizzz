@@ -49,3 +49,11 @@ Le sous-dossier pages contient toutes les pages du projet. Actuellement, il n'y 
 Le sous-dossier utils contient des fichiers utiles tels que le fichier api.py qui est en charge des appels à l'API spotify et de la manipulation des données.
 
 Le sous-dossier components contient lui les composants récurrents de l'application tels que les graphiques, les titres ou le footer.
+
+### Dépendences
+
+Les dépendences python suivantes sont utilisées pour ce projet :
+- dash (https://pypi.org/project/dash/)
+- plotly (https://pypi.org/project/plotly/)
+- pandas (https://pypi.org/project/pandas/)
+- pycountry-convert (https://pypi.org/project/pycountry-convert/)
