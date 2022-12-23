@@ -12,7 +12,7 @@ def create_home(app):
             html.Section(
                 children=[
                     html.H2(
-                        children="Quelques statistiques"
+                        children="Titre 1 (Clément, je ne sais pas quoi mettre ici...)"
                     ),
                     html.Div(
                         className="graph-grid",
