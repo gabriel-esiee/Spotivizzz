@@ -60,7 +60,7 @@ def create_map_graph(app):
         fig.update_layout(dragmode=False)
 
         return fig
-    ## fin callback
+    ## Fin callback.
 
     ## Construction de l'élément HTML du graphique et du select.
     return html.Div(

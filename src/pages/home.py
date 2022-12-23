@@ -3,7 +3,7 @@
 # les composant nécéssaires.
 
 from dash import html
-from ..components import popularity_by_countries_graph, create_map_graph, duration_by_genre_graph, bpm_by_contry_graph, loudness_energy_graph
+from ..components import popularity_by_countries_graph, create_map_graph, duration_by_genre_graph, bpm_by_contry_graph, loudness_energy_graph, genre_comparing_graph
 
 # Référence vers l'objet app qui est construit dans app.py.
 app_ref = None
@@ -47,6 +47,10 @@ def create_home(app):
                             html.Div(
                                 className="container-graph",
                                 children=duration_by_genre_graph
+                            ),
+                            html.Div(
+                                className="container-graph comparing",
+                                children=genre_comparing_graph
                             )
                         ]
                     ),
