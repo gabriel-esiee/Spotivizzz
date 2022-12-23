@@ -20,11 +20,17 @@ $ python main.py
 
 ... et vous y connecter à l'adresse suivante sur votre navigateur :
 
+```bash
 http://127.0.0.1:8050/
+```
 
 ## Rapport d'analyse
 
-Mettre en avant ici les principales conclusions extraites des données.
+Donner quelques informations à propos des données utilisées et mettre en avant les principales conclusions extraites.
+
+### Données utilisées
+
+### Conclusions
 
 ## Developper Guide
 
