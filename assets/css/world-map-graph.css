@@ -8,11 +8,6 @@
     background-color: white;
 }
 
-.home .graph-grid .comparing {
-    grid-column: 1 / 3;
-    grid-row: 5 / 7;
-}
-
 .home #world-map-graph {
     position: absolute;
     top: 50px;

@@ -1,0 +1,8 @@
+/* 
+ * Style rules for genre comparing graph.
+*/
+
+.home .graph-grid .comparing {
+    grid-column: 1 / 3;
+    grid-row: 5 / 7;
+}
