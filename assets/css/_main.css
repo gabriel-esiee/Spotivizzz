@@ -12,17 +12,22 @@ body {
 
     /* Main CSS variables */
     --primary-bg: #918BDC;
+    --light-bg: #B2AEE6;
     --primary-text: #00FFFC;
     --border-radius-medium: 18px;
+
+    background-color: var(--primary-bg);
 }
 
 h1 {
     font-size: 64px;
     font-weight: 900;
+    color: white;
 }
 
 h2, h3 {
     font-weight: 700;
+    color: white;
 }
 
 section {

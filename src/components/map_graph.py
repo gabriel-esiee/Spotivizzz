@@ -21,8 +21,6 @@ def create_map_graph(app):
         Input(component_id='world-map-select', component_property='value')
     )
     def update_output_fig(value):
-        print("New select value: " + value)
-
         # Select correct value to show depending
         # on the user choice.
         config = {
@@ -46,20 +44,22 @@ def create_map_graph(app):
             projection="natural earth",
             size=config['size'],
             hover_name=config['hover_title'],
-            title=config['title']
+            title=config['title'],
         )
+        fig.update_layout(dragmode=False)
 
         return fig
     ##
 
     return html.Div(
-        className="graph-container",
+        className="graph-container world-map",
         children=[
             dcc.Graph(
                 figure=fig,
                 className="fig",
                 config={
-                    "displayModeBar": False
+                    "displayModeBar": False,
+                    "scrollZoom": False
                 },
                 id='world-map-graph',
                 style={'height': '100%'}

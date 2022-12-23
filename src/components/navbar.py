@@ -1,8 +1,10 @@
 from dash import html
 
 navbar = html.Div(
-    [
-        html.H1(children="Spotivizzz")
+    children=[
+        html.Img(
+            src="/assets/images/header.png"
+        )
     ],
     className="navbar"
 )

@@ -3,8 +3,11 @@
 */
 
 .navbar {
-    padding: 100px 0;
     background-color: var(--primary-bg);
     color: var(--primary-text);
     text-align: center;
+}
+
+.navbar img {
+    width: 100%;
 }

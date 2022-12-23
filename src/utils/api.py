@@ -25,9 +25,21 @@ genresData = pd.DataFrame({
 #
 
 def fake_bars_values():
+    # Isolate countries names from playlists titles.
+    # Exemple : From playlist "Top 50 - India" returns "India"
+    playlist_titles = topsData["playlist_name"].values.flatten().tolist()
+    playlist_titles.pop(0) # Delete global playlist
+    countries_names = []
+    for i in range ( len(playlist_titles) ):
+        country_name = playlist_titles[i].replace("Top 50 - ", '')
+        countries_names.append(country_name)
+
+    popularity = topsData["popularity"].values.flatten().tolist()
+    popularity.pop(0)
+
     df = pd.DataFrame({
-        "playlist_name": topsData["playlist_name"],
-        "popularity": topsData["popularity"]
+        "Pays": countries_names,
+        "Popularité":    popularity
     })
     return df
 
@@ -94,9 +106,21 @@ def fake_duration_by_genre():
     return df
 
 def fake_bpm_by_country():
+    # Isolate countries names from playlists titles.
+    # Exemple : From playlist "Top 50 - India" returns "India"
+    playlist_titles = topsData["playlist_name"].values.flatten().tolist()
+    playlist_titles.pop(0) # Delete global playlist
+    countries_names = []
+    for i in range ( len(playlist_titles) ):
+        country_name = playlist_titles[i].replace("Top 50 - ", '')
+        countries_names.append(country_name)
+
+    bpm = topsData["average_BPM"].values.flatten().tolist()
+    bpm.pop(0)
+
     df = pd.DataFrame({
-        "Pays": topsData["playlist_name"],
-        "BPM": topsData["average_BPM"]
+        "Pays": countries_names,
+        "BPM":  bpm
     })
     return df
 

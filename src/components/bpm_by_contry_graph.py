@@ -3,7 +3,7 @@ import plotly.express as px
 from ..utils import api
 
 df = api.fake_bpm_by_country()
-fig = px.scatter(df, x="BPM", y="Pays", color="Pays",
+fig = px.scatter(df, x="Pays", y="BPM", color="Pays",
                  title="BPM moyen selon le pays",
                  labels={"salary":"BPM moyen"} # customize axis label
                 )

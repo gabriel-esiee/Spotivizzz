@@ -2,24 +2,27 @@
  * Style rules for the home page.
 */
 
-.home .graph-container {
+.home .container-graph {
     position: relative;
     width: 100%;
-    height: 0;
+    height: auto;
     padding-bottom: 50%;
-    background-color: lightgrey;
+    background-color: var(--light-bg);
     border-radius: var(--border-radius-medium);
+    overflow: hidden;
+}
+
+.home .graph-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .home .graph-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
-    grid-auto-rows: minmax(100px, auto);
-    margin-bottom: 400px;
-}
-
-.home .graph-grid .world-map {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    grid-auto-rows: minmax(400px, auto);
 }
