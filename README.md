@@ -12,7 +12,7 @@ Aprés avoir cloné le projet, comencez par installer les dépendances nécéssa
 $ python -m pip install -r requirements.txt
 ```
 
-Vous pourrez ensuite lancer le dashboard avec la commande :
+Vous pourrez ensuite vous deplacer dans le projet et lancer le dashboard avec la commande :
 
 ```bash
 $ python main.py

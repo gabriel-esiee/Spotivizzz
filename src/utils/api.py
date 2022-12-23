@@ -1,9 +1,11 @@
+# api.py est reponsable de la récupération des données
+# et de leurs traitement.
+
 import pandas as pd
-import plotly.express as px
 import pycountry_convert as pc
 
-# Common data frames
-#
+# Les dataframes finaux sont enregistrés dans des variables global ici
+# pour pouvoir être ré-utilisés dans les fonctions des graphiques.
 
 topsData = pd.DataFrame({
     "playlist_name":    ["Top 50 - Global", "Top 50 - France", "Top 50 - India", "Top 50 - Japan"],
@@ -21,58 +23,50 @@ genresData = pd.DataFrame({
     "average_duration": [3.14, 3.8, 3.31, 4.4]
 })
 
-# Data functions
-#
+# Les fonctions des graphiques sont définie ci-dessous.
+# Chaque graphique a une fonction associé qui lui permets
+# de recevoir les données nécéssaire dans le bon format.
 
-def fake_bars_values():
-    # Isolate countries names from playlists titles.
-    # Exemple : From playlist "Top 50 - India" returns "India"
+# Graphique à barres popularité moyenne par pays.
+def fake_popularity_by_countries():
+    # Récupération du nom du pays via le titre de la playlist.
+    # Par exemple, la playlist "Top 50 - France" retourne "France".
     playlist_titles = topsData["playlist_name"].values.flatten().tolist()
-    playlist_titles.pop(0) # Delete global playlist
+    playlist_titles.pop(0) # Suppression de la playlist mondiale car seul les pays nous intéressent.
     countries_names = []
     for i in range ( len(playlist_titles) ):
         country_name = playlist_titles[i].replace("Top 50 - ", '')
         countries_names.append(country_name)
 
+    # Popularité.
     popularity = topsData["popularity"].values.flatten().tolist()
     popularity.pop(0)
 
+    # Construction du dataframe.
     df = pd.DataFrame({
-        "Pays": countries_names,
-        "Popularité":    popularity
+        "countries":  countries_names,
+        "popularity": popularity
     })
     return df
 
-def fake_table_values(): # Return a tuple of headers/values
-    headers = dict(values=[
-        'Genre',
-        'Popularité (%)',
-        'Durée moyenne (min)'
-    ])
-    values = dict(values=[
-        genresData["genre_name"],
-        genresData["popularity"],
-        genresData["average_duration"]
-    ])
-    return (headers, values)
-
+# Graphique carte du monde.
 def fake_map_values():
-    # Isolate countries names from playlists titles.
-    # Exemple : From playlist "Top 50 - India" returns "India"
+    # Récupération du nom du pays via le titre de la playlist.
     playlist_titles = topsData["playlist_name"].values.flatten().tolist()
-    playlist_titles.pop(0) # Delete global playlist
+    playlist_titles.pop(0)
     countries_names = []
     for i in range ( len(playlist_titles) ):
         country_name = playlist_titles[i].replace("Top 50 - ", '')
         countries_names.append(country_name)
 
-    # Convert countries codes from countries names.
+    # Conversion des noms des pays en code ISO.
+    # Par exemple, si le pays "France" retourne "FRA".
     countries_codes = []
     for i in range ( len(countries_names) ):
         country_code = pc.country_name_to_country_alpha3(countries_names[i], cn_name_format="default")
         countries_codes.append(country_code)
 
-    # Convert countries names to continents names.
+    # Conversion des noms des pays en nom de continent associés.
     continents_names = []
     for i in range ( len(countries_codes) ):
         country_alpha_2 = pc.country_alpha3_to_country_alpha2(countries_codes[i])
@@ -80,15 +74,15 @@ def fake_map_values():
         continent_name = pc.convert_continent_code_to_continent_name(continent_code)
         continents_names.append(continent_name)
 
-    #Filter top artists for each countries
+    # Top artistes.
     top_artists = topsData["top_artist"].values.flatten().tolist()
     top_artists.pop(0)
 
-    #Filter average BPM for each countries
+    # BPM moyen.
     averages_BPM = topsData["average_BPM"].values.flatten().tolist()
     averages_BPM.pop(0)
 
-    # Create data frame
+    # Construction du dataframe.
     df = pd.DataFrame({
         "countries_codes":  countries_codes,
         "countries_names":  countries_names,
@@ -98,16 +92,18 @@ def fake_map_values():
     })
     return df
 
+# Graphique à barres horizontales durée moyenne en fonction du genre.
 def fake_duration_by_genre():
+    # Construction du dataframe.
     df = pd.DataFrame({
-        "Genre": genresData["genre_name"],
-        "Durée": genresData["average_duration"]
+        "genre":    genresData["genre_name"],
+        "duration": genresData["average_duration"]
     })
     return df
 
+# Graphique à points bpm par pays.
 def fake_bpm_by_country():
-    # Isolate countries names from playlists titles.
-    # Exemple : From playlist "Top 50 - India" returns "India"
+    # Récupération du nom du pays via le titre de la playlist.
     playlist_titles = topsData["playlist_name"].values.flatten().tolist()
     playlist_titles.pop(0) # Delete global playlist
     countries_names = []
@@ -115,18 +111,22 @@ def fake_bpm_by_country():
         country_name = playlist_titles[i].replace("Top 50 - ", '')
         countries_names.append(country_name)
 
+    # BPM moyen.
     bpm = topsData["average_BPM"].values.flatten().tolist()
     bpm.pop(0)
 
+    # Construction du dataframe.
     df = pd.DataFrame({
         "Pays": countries_names,
         "BPM":  bpm
     })
     return df
 
+# Graphique à points volume / energie.
 def fake_loudness_by_energy():
+    # Construction du dataframe.
     df = pd.DataFrame({
-        "Volume": topsData["average_loudness"],
-        "Energie": topsData["average_energy"]
+        "loudness": topsData["average_loudness"],
+        "energy": topsData["average_energy"]
     })
     return df

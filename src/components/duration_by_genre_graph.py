@@ -1,6 +1,6 @@
-# loudness_energy_graph.py est responsable de la construction
-# du graphique à points représentant la correlation entre le
-# volume et l'energie des morceaux.
+# duration_by_genre_graph.py est responsable de la construction
+# du graphique à barres horizontales représentant la durée moyenne
+# des morceaux pour chaque pays.
 
 from dash import html, dcc
 import plotly.express as px
@@ -8,20 +8,22 @@ from ..utils import api
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_loudness_by_energy()
-fig = px.scatter(
+df = api.fake_duration_by_genre()
+fig = px.bar(
     df,
-    x="loudness",
-    y="energy",
-    title="Correlation entre volume et energie",
+    x="duration",
+    y="genre",
+    color="genre",
+    orientation='h',
+    title="Durée des morceaux selon le genre",
     labels={
-        "loudness": "Volume",
-        "energy":   "Energie"
+        "duration": "Durée moyenne",
+        "genre":    "Genre"
     }
 )
 
 # Construction des éléments HTML.
-loudness_energy_graph = html.Div(
+duration_by_genre_graph = html.Div(
     className="graph-container",
     children=[
         dcc.Graph(

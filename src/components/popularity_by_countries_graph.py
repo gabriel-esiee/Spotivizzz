@@ -1,6 +1,6 @@
-# loudness_energy_graph.py est responsable de la construction
-# du graphique à points représentant la correlation entre le
-# volume et l'energie des morceaux.
+# popularity_by_countries_graph.py est responsable de la construction
+# du graphique à barres représentant la popularité moyenne des morceaux
+# pour chacuns des pays.
 
 from dash import html, dcc
 import plotly.express as px
@@ -8,20 +8,21 @@ from ..utils import api
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_loudness_by_energy()
-fig = px.scatter(
+df = api.fake_popularity_by_countries()
+fig = px.bar(
     df,
-    x="loudness",
-    y="energy",
-    title="Correlation entre volume et energie",
+    x="countries",
+    y="popularity",
+    color="countries",
+    title="Popularité moyenne des morceaux du Top 50 selon le pays",
     labels={
-        "loudness": "Volume",
-        "energy":   "Energie"
+        "countries":  "Pays",
+        "popularity": "Popularité moyenne"
     }
 )
 
 # Construction des éléments HTML.
-loudness_energy_graph = html.Div(
+popularity_by_countries_graph = html.Div(
     className="graph-container",
     children=[
         dcc.Graph(

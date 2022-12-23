@@ -1,7 +1,13 @@
+# map_graph.py est responsable de la construction de graphique
+# de la carte du monde et de la gestions de ses callback (notamment les
+# callbacks du select).
+
 from dash import html, dcc, Input, Output
 import plotly.express as px
 from ..utils import api
 
+# Récupération des données.
+# Les données sont déja traités dans utils/api.py.
 df = api.fake_map_values()
 fig = px.scatter_geo(
     df,
@@ -12,17 +18,18 @@ fig = px.scatter_geo(
     title="Top artistes de chaque pays"
 )
 
-# Create graph function.
+# Fonction de création du graph.
+# La fonction prend aussi en charge les callback.
 def create_map_graph(app):
 
-    # Create callback for changing select value.
+    # Callback lorsque le select change de valeur.
     @app.callback(
         Output(component_id='world-map-graph', component_property='figure'),
         Input(component_id='world-map-select', component_property='value')
     )
     def update_output_fig(value):
-        # Select correct value to show depending
-        # on the user choice.
+        # Lorsque le select change de valeur, regénérer le graphique en
+        # en fonction du choix de l'utilisateur.
         config = {
             "title": "Top artistes de chaque pays",
             "hover_title": "top_artists",
@@ -35,7 +42,7 @@ def create_map_graph(app):
                 "size": "averages_BPM"
             }
 
-        # Rebuild graph.
+        # Regénération des nouvelles données avec les paramètres adaptés.
         df = api.fake_map_values()
         fig = px.scatter_geo(
             df,
@@ -45,12 +52,17 @@ def create_map_graph(app):
             size=config['size'],
             hover_name=config['hover_title'],
             title=config['title'],
+            labels={
+                "continents_names":  "Continent",
+                "countries_codes":   "Pays"
+            }
         )
         fig.update_layout(dragmode=False)
 
         return fig
-    ##
+    ## fin callback
 
+    ## Construction de l'élément HTML du graphique et du select.
     return html.Div(
         className="graph-container world-map",
         children=[
