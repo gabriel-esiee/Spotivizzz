@@ -3,6 +3,12 @@
 
 import pandas as pd
 import pycountry_convert as pc
+from .azure_cosmos_db_linker import get_item_from_azure_database
+
+
+# ID des databases stockés dans Cosmos DB:
+
+id_top_playlists = "0f5cf919-3e2f-470c-a96c-8d64e1c56c51"
 
 # Les dataframes finaux sont enregistrés dans des variables global ici
 # pour pouvoir être ré-utilisés dans les fonctions des graphiques.
@@ -16,6 +22,8 @@ topsData = pd.DataFrame({
     "average_energy":   [0.51, 0.623, 0.524, 0.451],
     "top_artist":       ["The Weeknd", "Gazo", "Michael Jackson", "BB Jacques"]
 })
+
+topsData = get_item_from_azure_database("spotivizzz", "top_playlist", id_top_playlists)
 
 genresData = pd.DataFrame({
     "genre_name":    ["Rap", "Rock", "Hip Hop", "Trap Latino"],
@@ -63,7 +71,11 @@ def fake_map_values():
     # Par exemple, si le pays "France" retourne "FRA".
     countries_codes = []
     for i in range ( len(countries_names) ):
-        country_code = pc.country_name_to_country_alpha3(countries_names[i], cn_name_format="default")
+        if(countries_names[i] == "UAE"):
+            country_code = "ARE"
+        else:
+            country_code = pc.country_name_to_country_alpha3(countries_names[i], cn_name_format="default")
+        
         countries_codes.append(country_code)
 
     # Conversion des noms des pays en nom de continent associés.
