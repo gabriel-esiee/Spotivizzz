@@ -65,17 +65,18 @@ def get_item_from_azure_database(database_name, container_name, item_id):
     return data
 
 
-def put_item_in_azure_data_base(item, database_name, container_name):
+def replace_item_in_azure_data_base(item_id, new_item_df, database_name, container_name):
     """Put an item as JSON in an Azure Cosmos DB
 
     Parameters:
     -----------
 
-    item: (Panda DataFrame) The item to store in the Azure Cosmos DB (converted from DataFrame to JSON)
+    item_id: (str) The ID of the item to replace
+    new_item_df: (Panda DataFrame) The item to store in the Azure Cosmos DB (converted from DataFrame to JSON)
     database_name: (str) name of the database where to put the item in
     container_name: (str) name of the container where to put the item in
 
-    Returns: the item ID
+    Returns: the newly updated item
     """
 
     DATABASE_NAME = database_name
@@ -83,7 +84,7 @@ def put_item_in_azure_data_base(item, database_name, container_name):
 
     # --- CONVERTED PD DATAFRAME TO JSON
 
-    item_json = item.to_json( orient= 'columns')
+    item_json = new_item_df.to_json( orient= 'columns')
 
 
     # --- GET DATABASE
@@ -101,9 +102,17 @@ def put_item_in_azure_data_base(item, database_name, container_name):
         print(f"container_name doesn't fit any container in your {database_name} database")
         return
 
-    
-    # Si l'item existe déjà, le remplacer
-    # A faire: mettre dans la database
-    # Retourner l'ID de l'item
+    try:
+        #set the new content for the item
+        item_json = json.loads(item_json)
+        item_json.update({"id": item_id})
 
-    return
+        #update the item in the container
+        new_item = container.replace_item(item=item_id, body= item_json)
+        print(f"✅ Successfully updated item with id: {item_id} in container: {container_name} in database: {database_name}")
+    
+    except:
+        print(f"❌ Fail Updating item with id: {item_id} in container: {container_name} in database: {database_name}")
+
+    return new_item
+
