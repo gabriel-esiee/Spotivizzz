@@ -32,7 +32,6 @@ def get_item_from_azure_database(database_name, container_name, item_id):
     # --- GET DATABASE
     try:
         database = client.get_database_client(DATABASE_NAME)
-        print(f"{DATABASE_NAME} already existed")
     except:
         print(f"database_name doesn't fit any database in your cosmos db")
         return
@@ -90,7 +89,6 @@ def replace_item_in_azure_data_base(item_id, new_item_df, database_name, contain
     # --- GET DATABASE
     try:
         database = client.get_database_client(DATABASE_NAME)
-        print(f"{DATABASE_NAME} already existed")
     except:
         print(f"database_name doesn't fit any database in your cosmos db")
         return

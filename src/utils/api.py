@@ -9,27 +9,13 @@ from .azure_cosmos_db_linker import get_item_from_azure_database
 # ID des databases stockés dans Cosmos DB:
 
 id_top_playlists = "0f5cf919-3e2f-470c-a96c-8d64e1c56c51"
+id_genre_playlists = "df6c4fcf-8cb1-4985-9002-aa80c483dc97"
 
 # Les dataframes finaux sont enregistrés dans des variables global ici
 # pour pouvoir être ré-utilisés dans les fonctions des graphiques.
 
-topsData = pd.DataFrame({
-    "playlist_name":    ["Top 50 - Global", "Top 50 - France", "Top 50 - India", "Top 50 - Japan"],
-    "popularity":       [90, 78, 79, 75],
-    "average_duration": [3.14, 3.8, 3.31, 4.4],
-    "average_BPM":      [124, 130, 112, 120],
-    "average_loudness": [-7.7, -6.2, -7.0, -7.1],
-    "average_energy":   [0.51, 0.623, 0.524, 0.451],
-    "top_artist":       ["The Weeknd", "Gazo", "Michael Jackson", "BB Jacques"]
-})
-
 topsData = get_item_from_azure_database("spotivizzz", "top_playlist", id_top_playlists)
-
-genresData = pd.DataFrame({
-    "genre_name":    ["Rap", "Rock", "Hip Hop", "Trap Latino"],
-    "popularity":       [90, 78, 79, 75],
-    "average_duration": [3.14, 3.8, 3.31, 4.4]
-})
+genresData = get_item_from_azure_database("spotivizzz", "genre_playlist", id_genre_playlists)
 
 # Les fonctions des graphiques sont définie ci-dessous.
 # Chaque graphique a une fonction associé qui lui permets
@@ -108,7 +94,7 @@ def fake_map_values():
 def fake_duration_by_genre():
     # Construction du dataframe.
     df = pd.DataFrame({
-        "genre":    genresData["genre_name"],
+        "genre":    genresData["genres"],
         "duration": genresData["average_duration"]
     })
     return df

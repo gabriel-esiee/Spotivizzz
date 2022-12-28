@@ -9,10 +9,10 @@ from ..utils import api
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
 df = api.fake_map_values()
-fig = px.scatter_geo(
+fig = px.choropleth(
     df,
     locations="countries_codes",
-    color="continents_names",
+    color="top_artists",
     hover_name="top_artists",
     projection="natural earth",
     title="Top artistes de chaque pays"
@@ -44,12 +44,12 @@ def create_map_graph(app):
 
         # Regénération des nouvelles données avec les paramètres adaptés.
         df = api.fake_map_values()
-        fig = px.scatter_geo(
+        fig = px.choropleth(
             df,
             locations="countries_codes",
-            color="continents_names",
+            color="top_artists",
+            color_discrete_sequence=px.colors.qualitative.Alphabet,
             projection="natural earth",
-            size=config['size'],
             hover_name=config['hover_title'],
             title=config['title'],
             labels={

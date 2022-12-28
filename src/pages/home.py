@@ -20,7 +20,7 @@ def create_home(app):
                 children=[
                     # Titre.
                     html.H2(
-                        children="Titre 1 (Clément, je ne sais pas quoi mettre ici...)"
+                        children="World Music Stats"
                     ),
 
                     # Graphiques.
