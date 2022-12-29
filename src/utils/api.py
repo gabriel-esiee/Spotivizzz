@@ -80,13 +80,43 @@ def fake_map_values():
     averages_BPM = topsData["average_BPM"].values.flatten().tolist()
     averages_BPM.pop(0)
 
+    # Top Tracks
+    top_tracks = topsData["top_track"].values.flatten().tolist()
+    top_tracks.pop(0)
+
+    # Top Tracks and Artists
+    top_tracks_and_artists = topsData["top_track_and_artist"].values.flatten().tolist()
+    top_tracks_and_artists.pop(0)
+
+    # Average Duration
+    average_duration = topsData["average_duration"].values.flatten().tolist()
+    average_duration.pop(0)
+
+    # Top Genres
+    top_genres = topsData["top_genre"].values.flatten().tolist()
+    top_genres.pop(0)
+
+    # Average Formated Duration
+    average_formated_duration = topsData["average_formated_duration"].values.flatten().tolist()
+    average_formated_duration.pop(0)
+
+    # Popularity
+    popularity = topsData["popularity"].values.flatten().tolist()
+    popularity.pop(0)
+
     # Construction du dataframe.
     df = pd.DataFrame({
-        "countries_codes":  countries_codes,
-        "countries_names":  countries_names,
-        "continents_names": continents_names,
-        "top_artists":      top_artists,
-        "averages_BPM":     averages_BPM
+        "countries_codes":           countries_codes,
+        "countries_names":           countries_names,
+        "continents_names":          continents_names,
+        "top_artists":               top_artists,
+        "averages_BPM":              averages_BPM,
+        "top_tracks":                top_tracks,
+        "top_tracks_and_artists":    top_tracks_and_artists,
+        "average_duration":          average_duration,
+        "average_formated_duration": average_formated_duration,
+        "top_genre":                 top_genres,
+        "popularity":                popularity,
     })
     return df
 
