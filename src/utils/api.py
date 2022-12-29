@@ -125,7 +125,8 @@ def fake_duration_by_genre():
     # Construction du dataframe.
     df = pd.DataFrame({
         "genre":    genresData["genres"],
-        "duration": genresData["average_duration"]
+        "duration": genresData["average_duration"],
+        "formated_duration": genresData["average_formated_duration"],
     })
     return df
 
@@ -143,10 +144,15 @@ def fake_bpm_by_country():
     bpm = topsData["average_BPM"].values.flatten().tolist()
     bpm.pop(0)
 
+    # Average Duration.
+    duration = topsData["average_duration"].values.flatten().tolist()
+    duration.pop(0)
+
     # Construction du dataframe.
     df = pd.DataFrame({
-        "Pays": countries_names,
-        "BPM":  bpm
+        "country": countries_names,
+        "bpm":  bpm,
+        "duration": duration,
     })
     return df
 

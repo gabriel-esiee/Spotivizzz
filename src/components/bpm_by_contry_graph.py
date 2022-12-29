@@ -11,13 +11,14 @@ from ..utils import api
 df = api.fake_bpm_by_country()
 fig = px.scatter(
     df,
-    x="Pays",
-    y="BPM",
-    color="Pays",
-    title="BPM moyen selon le pays",
+    x="duration",
+    y="bpm",
+    color="country",
+    title="BPM and Duration Correlation on Nationals Top 50s",
     labels={
-        "Pays": "Pays",
-        "BPM":  "BPM moyen"
+        "country": "Countries",
+        "bpm":  "Average BPM",
+        "duration": "Average Duration"
     }
 )
 
