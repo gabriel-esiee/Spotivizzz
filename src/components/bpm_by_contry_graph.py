@@ -13,13 +13,20 @@ fig = px.scatter(
     df,
     x="duration",
     y="bpm",
-    color="country",
+    color="continents_names",
     title="BPM and Duration Correlation on Nationals Top 50s",
+    hover_name="country",
+    hover_data=["formated_duration"],
     labels={
+        "continents_names": "Continent",
         "country": "Countries",
         "bpm":  "Average BPM",
-        "duration": "Average Duration"
-    }
+        "duration": "Average Duration",
+        "formated_duration": "Average Duration",
+        "population": "Population",
+    },
+    size="population",
+    size_max=50
 )
 
 # Construction des éléments HTML.

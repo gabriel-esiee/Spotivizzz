@@ -10,3 +10,4 @@ idna
 requests
 six
 urllib3
+pypopulation
