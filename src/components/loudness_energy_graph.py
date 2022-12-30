@@ -13,10 +13,10 @@ fig = px.scatter(
     df,
     x="loudness",
     y="energy",
-    title="Correlation entre volume et energie",
+    title="Track Loudness and Energy Correlation",
     labels={
-        "loudness": "Volume",
-        "energy":   "Energie"
+        "loudness": "Loudness (dB)",
+        "energy":   "Energy"
     }
 )
 

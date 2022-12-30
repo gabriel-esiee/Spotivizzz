@@ -76,10 +76,11 @@ fig = px.bar(
     y="genre",
     color="genre",
     orientation='h',
-    title="Average Duration by Genres",
+    title="Average Track Duration by Genres",
     text= "formated_duration",
     labels={
-        "duration": "Average Duration (in seconds)",
+        "duration": "Average Duration",
+        "formated_duration": "Average Duration",
         "genre":    "Genre"
     },
     color_discrete_sequence= long_color_sequence

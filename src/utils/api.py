@@ -1,5 +1,5 @@
 # api.py est reponsable de la récupération des données
-# et de leurs traitement.
+# et de leur traitement.
 
 import pandas as pd
 import pycountry_convert as pc
@@ -123,9 +123,20 @@ def fake_map_values():
 
 # Graphique à barres horizontales durée moyenne en fonction du genre.
 def fake_duration_by_genre():
+
+    #traitement des noms de genre
+    genres = []
+
+    for genre in genresData['genres']:
+        genre = genre.replace("_", "-")
+        words = genre.split("-")
+        words = [word.capitalize() for word in words]
+        genre = "-".join(words)
+        genres.append(genre)
+    
     # Construction du dataframe.
     df = pd.DataFrame({
-        "genre":    genresData["genres"],
+        "genre":    genres,
         "duration": genresData["average_duration"],
         "formated_duration": genresData["average_formated_duration"],
     })
