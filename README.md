@@ -1,6 +1,6 @@
 # Spotivizzz ![Build Passing](https://img.shields.io/badge/build-passing-brightgreen?style=plastic) ![License MIT](https://img.shields.io/badge/license-MIT-brightgreen?style=plastic) ![Version](https://img.shields.io/badge/version-v1.0-orange?style=plastic) ![Dependencies](https://img.shields.io/badge/Python-3.7+-yellow?style=plastic) ![release DAte](https://img.shields.io/badge/release_date-december_2022-red?style=plastic)
-<img src="https://github.com/gabriel-esiee/Spotivizzz/blob/master/assets/images/spotivizzz_banner.png" align="center"
-     alt="Spotivizzz banner" width="1920" height="400">
+<img src="https://github.com/gabriel-esiee/Spotivizzz/blob/master/assets/images/spotivizzz_banner.png"
+     alt="Spotivizzz banner">
 **A music data analysis tool using** [Spotify API](https://developer.spotify.com/documentation/web-api/) 
 *by Clément ZELTER & Gabriel ROULEAU (ESIEE - E3FI - Groupe 3)*
 
