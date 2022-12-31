@@ -21,7 +21,8 @@ fig = px.scatter(
     labels={
         "loudness": "Loudness (dB)",
         "energy":   "Energy",
-        "loudness_energy_ratio": "Loudness x Energy Index"
+        "loudness_energy_ratio": "Loudness x Energy Index",
+        "genres": "Genre",
     }
 )
 

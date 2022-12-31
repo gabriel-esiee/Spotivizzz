@@ -148,7 +148,11 @@ def create_map_graph(app):
             "color": "top_artists",
             "color_discrete_sequence": long_color_sequence,
             "color_continuous_scale": None,
-            "labels": {"countries_names":   "Pays"},
+            "labels": {"countries_names":   "Country",
+                       "countries_codes":   "Alpha3 Code",
+                       "top_artists":       "Top Artist",
+            },
+            "hover_data": ["countries_names"],
             
         }
         df = api.map_values()
@@ -160,7 +164,11 @@ def create_map_graph(app):
                 "color": "averages_BPM",
                 "color_discrete_sequence": None,
                 "color_continuous_scale": px.colors.sequential.OrRd,
-                "labels": {"countries_names":   "Pays"},
+                "labels": {"countries_names":   "Country",
+                           "countries_codes":   "Alpha3 Code",
+                           "averages_BPM":      "Average BPM",
+                },
+                "hover_data": ["countries_names"],
             }
         
         if (value == "TOPT"):
@@ -170,7 +178,11 @@ def create_map_graph(app):
                 "color": "top_tracks_and_artists",
                 "color_discrete_sequence": long_color_sequence,
                 "color_continuous_scale": None,
-                "labels": {"countries_names":   "Pays"},
+                "hover_data": ["countries_names"],
+                "labels": {"countries_names":   "Country",
+                           "countries_codes":   "Alpha3 Code",
+                           "top_tracks_and_artists": "Top Track"
+                },
             }
         
         if (value == "DURM"):
@@ -180,7 +192,12 @@ def create_map_graph(app):
                 "color": "average_duration",
                 "color_discrete_sequence": None,
                 "color_continuous_scale": px.colors.sequential.deep,
-                "labels": {"countries_names":   "Pays"},
+                "labels": {"countries_names":   "Country",
+                           "countries_codes":   "Alpha3 Code",
+                           "average_duration": "Average Duration (seconds)",
+                           "average_formated_duration": "Average Duration"
+                },
+                "hover_data": ["countries_names", "average_formated_duration"],
             }
         
         if (value == "TOPG"):
@@ -191,7 +208,11 @@ def create_map_graph(app):
                 "color": "top_genre",
                 "color_discrete_sequence": long_color_sequence,
                 "color_continuous_scale": None,
-                "labels": {"countries_names":   "Pays"},
+                "labels": {"countries_names":   "Country",
+                           "countries_codes":   "Alpha3 Code",
+                           "top_genre":         "Top Genre"
+                },
+                "hover_data": ["countries_names"],
             }
         
         fig = px.choropleth(
@@ -202,6 +223,7 @@ def create_map_graph(app):
             color_continuous_scale= config["color_continuous_scale"],
             projection="natural earth",
             hover_name=config['hover_title'],
+            hover_data=config['hover_data'],
             title=config['title'],
             labels=config['labels']
         )
