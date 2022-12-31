@@ -1,4 +1,6 @@
 # Spotivizzz ![Build Passing](https://img.shields.io/badge/build-passing-brightgreen?style=plastic) ![License MIT](https://img.shields.io/badge/license-MIT-brightgreen?style=plastic) ![Version](https://img.shields.io/badge/version-v1.0-orange?style=plastic) ![Dependencies](https://img.shields.io/badge/Python-3.7+-yellow?style=plastic) ![release DAte](https://img.shields.io/badge/release_date-december_2022-red?style=plastic)
+<img src="https://github.com/gabriel-esiee/Spotivizzz/blob/master/assets/images/spotivizzz_banner.png" align="center"
+     alt="Spotivizzz banner" width="1920" height="400">
 **A music data analysis tool using** [Spotify API](https://developer.spotify.com/documentation/web-api/) 
 *by Clément ZELTER & Gabriel ROULEAU (ESIEE - E3FI - Groupe 3)*
 
@@ -33,9 +35,11 @@ Nous avons utilisé les données fournit par Spotify pour mettre en évidence de
   
 Nous avons principalement utilisé deux comparaisons pour notre travail : la comparaison de genres et la comparaison entre les pays.  
   
-Comparer les genres nous as permis de mettre en évidence une différence quant à la durée des morceaux ainsi qu’une corrélation entre le volume d’un morceaux et son « niveau d’énergie ». Nous avons ainsi démontré qu’un morceau avec un volume supérieur a généralement un niveau d’énergie supérieur.  
+Comparer les genres nous as permis de mettre en évidence une différence quant à la durée des morceaux. On remarque ainsi que la musique classique a une durée moyenne de 5 minutes et 43 secondes alors que les morceaux de Pop durent en moyenne 3 minutes 20.  
   
-Comparer les musiques les plus populaires de chaque pays nous a permis de montrer les différences de niveau de BPM (battement par minute, qui représente le tempo de d’un morceau) entre les pays du monde. On remarque alors que les pays d’Amérique du sud on généralement un tempo plus lent que les pays européens. La Roumanie présentant le niveau moyen de BPM le plus haut avec 135 battement par minute en moyenne. On remarque aussi, grâce au graphique de la carte, que les pays d’Asie du Sud-est présentent une durée moyenne bien supérieure que celle de l’europe de l’est. Dans certains de ces pays la durée moyenne d’un morceau du Top 50 est de 240 secondes. Là où la durée moyenne d’un morceau du Top 50 Ukrainien est environ de 170 secondes. C’est une différence considérable. Ces différences montrent un changement de culture (notamment musicale) entre ces régions du monde. Il est aussi intéressant de noter que les durées moyennes des morceaux en europe de l’ouest, en amérique du nord ou en australie sont très proche puisqu’il s’agit tout les trois de civilisations occidentales avec une culture parfois assez proche.
+Un autre graphique mets en corrélation le volume et son « niveau d’énergie ». On remarque ainsi qu’un volume supérieur vient généralement avec un niveau d’énergie.  
+  
+Comparer les musiques de chaque pays nous a permis de montrer des différences quand au niveau de BPM (battement par minute, qui représente le tempo de d’un morceau) et de durée des morceaux. On remarque alors que les pays d’Asie on généralement des morceaux plus long et que pour certains pays comme la Thaïlande un niveau de BPM plus élevé que le reste du monde. Ces différences montrent un changement de culture (notamment musicale) entre ces régions du monde. Il est aussi intéressant de noter que les durées moyennes des morceaux en europe de l’ouest, en amérique du nord ou en australie sont très proche puisqu’il s’agit tout les trois de civilisations occidentales avec une culture parfois assez proche.
 
 ### Données utilisées
 - Les données relatives aux Top 50 des pays sont récupérées à travers les playlists "Top 50 - [country_name]" générées automatiquement par [Spotify](https://spotify.com/). Example pour la France: [Top 50 - France](https://open.spotify.com/playlist/37i9dQZEVXbIPWwFssbupI?si=5892fcd440b440b3)
@@ -43,6 +47,8 @@ Comparer les musiques les plus populaires de chaque pays nous a permis de montre
 - Les données relatives à la démographie des pays du monde sont récupérées via le module Python [pypopulation](https://pypi.org/project/pypopulation/)
 
 ## Developper Guide
+Schéma de l'architecture du code de Spotivizzz:
+[![](https://mermaid.ink/img/pako:eNqdVE1vozAQ_SuWe0mkJAo0AcNhpbRopZV2pdXm1iSKHNsUq2Aj22xLo_z3NYYGkl429QHNjOe9-cJzhERSBmOY5vKVZFgZ8PPPVgB7dHV4VrjMgC6l4Wm915yyzbpVwNoqu9bROXc-q98_Rmcfq-zGYDr91l6XdXdV1rtxC2WCtsJ1SKb-MtVFdLILCKZAVUJw8QykIAxgQHF9nUVZu5AUG7xPmSHZaJNYGXxv5I_Azek9egAWOK811x1m1amfYB9-DkmkLqTe08NmtHqvFAOPzgCSh_FuUOdVjSTnTJi2xkcnXzf1zOuiFJiL0ab5zvoGNqcxdRXopliuyxzXILHaQWJFL5rdJWHqnA2HBlKe5_GdlzxEy8VEGyVfWHxHCOnk6SunJov98u0Tge33DeAhfDCAlmE-T9OU_Hf4y0l8iaJv8Q3wIYFrfouNPHSgt2Svs1uQF43v30dHYdM-4xFCl3jvquj-z_sCergOboLDCSyYsg2jdt8cG9sWmowVbAtjK1KsXrZwK07WD1dGrmtBYGxUxSawKu2sWcKxfToFjFOca2stsYDxEb7B-H45C9HS9xCKfN_zgzCYwBrGizCcRQh5QeSj-cK_R8vTBL5LaSnmsygIIz-wZm_hBcHCd3xP7rINyig3Uv1q96Nbk6d_lQK31Q?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqdVE1vozAQ_SuWe0mkJAo0AcNhpbRopZV2pdXm1iSKHNsUq2Aj22xLo_z3NYYGkl429QHNjOe9-cJzhERSBmOY5vKVZFgZ8PPPVgB7dHV4VrjMgC6l4Wm915yyzbpVwNoqu9bROXc-q98_Rmcfq-zGYDr91l6XdXdV1rtxC2WCtsJ1SKb-MtVFdLILCKZAVUJw8QykIAxgQHF9nUVZu5AUG7xPmSHZaJNYGXxv5I_Azek9egAWOK811x1m1amfYB9-DkmkLqTe08NmtHqvFAOPzgCSh_FuUOdVjSTnTJi2xkcnXzf1zOuiFJiL0ab5zvoGNqcxdRXopliuyxzXILHaQWJFL5rdJWHqnA2HBlKe5_GdlzxEy8VEGyVfWHxHCOnk6SunJov98u0Tge33DeAhfDCAlmE-T9OU_Hf4y0l8iaJv8Q3wIYFrfouNPHSgt2Svs1uQF43v30dHYdM-4xFCl3jvquj-z_sCergOboLDCSyYsg2jdt8cG9sWmowVbAtjK1KsXrZwK07WD1dGrmtBYGxUxSawKu2sWcKxfToFjFOca2stsYDxEb7B-H45C9HS9xCKfN_zgzCYwBrGizCcRQh5QeSj-cK_R8vTBL5LaSnmsygIIz-wZm_hBcHCd3xP7rINyig3Uv1q96Nbk6d_lQK31Q)
 Le projet est structuré en plusieurs sous-dossiers qui ont chacun leurs fonctions propres.
 
 ### /
@@ -72,3 +78,4 @@ Liste des dépendances Python utilisées par le projet Spotivizzz :
 - [six](https://pypi.org/project/six/)
 - [urllib3](https://pypi.org/project/urllib3/)
 - [pypopulation](https://pypi.org/project/pypopulation/)
+- [statsmodel](https://pypi.org/project/statsmodels/)
