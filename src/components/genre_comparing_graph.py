@@ -1,29 +1,26 @@
 # genre_comparing_graph.py est responsable de la construction
 # du graphique comparant deux genres entre eux.
 
+import pandas as pd
 from dash import html, dcc
 import plotly.express as px
 from ..utils import api
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_duration_by_genre()
-fig = px.bar(
-    df,
-    x="duration",
-    y="genre",
-    color="genre",
-    orientation='h',
-    title="Average Track Duration by Genres",
-    text= "formated_duration",
-    labels={
-        "duration": "Average Duration",
-        "formated_duration": "Average Duration",
-        "genre":    "Genre"
-    },
-)
+genres_df = api.dual_genre_comparaison()
+#genre_data = genres_df[""]
 
-fig.update_layout(yaxis={'categoryorder':'total descending'})
+genre = 'pop'
+genre_analysis_values = ['energy', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence']
+values = genres_df[genres_df['genre'] == genre][genre_analysis_values].values.tolist()
+print(values[0])
+
+df = pd.DataFrame(dict(
+    r=values[0],
+    theta=genre_analysis_values,))
+fig = px.line_polar(df, r='r', theta='theta', line_close=True)
+fig.update_traces(fill='toself')
 
 # Get Genres List to update in the dropdowns
 genres_list = api.dual_genre_comparaison()["genre"].to_list()

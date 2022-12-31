@@ -287,7 +287,8 @@ def dual_genre_comparaison():
     
     # Construction du dataframe.
     df = pd.DataFrame({
-        "genre":    genres,
+        "formated_genre":    genres,
+        'genre': genresData["genres"],
         "duration": genresData["average_duration"],
         "formated_duration": genresData["average_formated_duration"],
         "bpm": genresData["average_BPM"],
