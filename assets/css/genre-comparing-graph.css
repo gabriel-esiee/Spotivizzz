@@ -5,4 +5,25 @@
 .home .graph-grid .comparing {
     grid-column: 1 / 3;
     grid-row: 5 / 7;
+    background-color: white;
+}
+
+.home .title{
+    padding-left: 5%;
+}
+
+.home .genre-1 {
+    position: absolute;
+    left: 0;
+    width: 40%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.home .genre-2 {
+    position: absolute;
+    left: 50%;
+    width: 40%;
+    padding-left: 5%;
+    padding-right: 5%;
 }

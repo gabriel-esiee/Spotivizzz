@@ -13,10 +13,15 @@ fig = px.scatter(
     df,
     x="loudness",
     y="energy",
+   
     title="Track Loudness and Energy Correlation",
+    hover_data=["genres"],
+    hover_name="title_and_artist",
+    color="loudness_energy_ratio",
     labels={
         "loudness": "Loudness (dB)",
-        "energy":   "Energy"
+        "energy":   "Energy",
+        "loudness_energy_ratio": "Loudness x Energy Index"
     }
 )
 

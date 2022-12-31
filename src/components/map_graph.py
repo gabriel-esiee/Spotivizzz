@@ -135,7 +135,7 @@ def create_map_graph(app):
         # Lorsque le select change de valeur, regénérer le graphique en
         # en fonction du choix de l'utilisateur.
         config = {
-            "title": "Top artistes de chaque pays",
+            "title": "Countries Top Artist",
             "hover_title": "top_artists",
             "color": "top_artists",
             "color_discrete_sequence": long_color_sequence,
@@ -219,8 +219,8 @@ def create_map_graph(app):
             ),
             dcc.Dropdown(
                 options=[
-                    {'label': 'Top artists',  'value': 'TOPA'},
-                    {'label': 'Top tracks',  'value': 'TOPT'},
+                    {'label': 'Top Artists',  'value': 'TOPA'},
+                    {'label': 'Top Tracks',  'value': 'TOPT'},
                     {'label': 'Average BPM',     'value': 'BPMM'},
                     {'label': 'Average Duration', 'value': 'DURM'},
                     {'label': 'Top Genre', 'value': 'TOPG'},

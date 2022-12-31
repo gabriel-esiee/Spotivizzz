@@ -11,12 +11,14 @@ from .azure_cosmos_db_linker import get_item_from_azure_database
 
 id_top_playlists = "0f5cf919-3e2f-470c-a96c-8d64e1c56c51"
 id_genre_playlists = "df6c4fcf-8cb1-4985-9002-aa80c483dc97"
+id_everything_playlist = "e25741cc-bfe3-4fa6-b6c4-948d3410934c"
 
 # Les dataframes finaux sont enregistrés dans des variables global ici
 # pour pouvoir être ré-utilisés dans les fonctions des graphiques.
 
 topsData = get_item_from_azure_database("spotivizzz", "top_playlist", id_top_playlists)
 genresData = get_item_from_azure_database("spotivizzz", "genre_playlist", id_genre_playlists)
+everythingData = get_item_from_azure_database("spotivizzz", "everything_playlist", id_everything_playlist)
 
 # Les fonctions des graphiques sont définie ci-dessous.
 # Chaque graphique a une fonction associé qui lui permets
@@ -32,15 +34,58 @@ def fake_popularity_by_countries():
     for i in range ( len(playlist_titles) ):
         country_name = playlist_titles[i].replace("Top 50 - ", '')
         countries_names.append(country_name)
+    
+    # Conversion des noms des pays en code ISO.
+    # Par exemple, si le pays "France" retourne "FRA".
+    countries_codes = []
+    for i in range ( len(countries_names) ):
+        if(countries_names[i] == "UAE"):
+            country_code = "ARE"
+        else:
+            country_code = pc.country_name_to_country_alpha3(countries_names[i], cn_name_format="default")
+        
+        countries_codes.append(country_code)
+    
+    # Countries Population
+    population = []
+    for country in countries_codes:
+        if(country == 'TWN'):
+            population.append(23570000)
+        else:
+            population.append(pp.get_population_a3(country))
 
     # Popularité.
     popularity = topsData["popularity"].values.flatten().tolist()
     popularity.pop(0)
 
+    # Top Genres
+    top_genres = topsData["top_genre"].values.flatten().tolist()
+    top_genres.pop(0)
+
+    genres = []
+
+    for genre in top_genres:
+        genre = genre.replace(" ", "-")
+        words = genre.split("-")
+        words = [word.capitalize() for word in words]
+        genre = "-".join(words)
+        genres.append(genre)
+
+    # Popularity by Population
+    popularity_by_population = []
+    counter = 0
+    for item in population:
+        popularity_by_population.append(round(item*popularity[counter]/1000000000))
+        counter +=1
+
+
     # Construction du dataframe.
     df = pd.DataFrame({
         "countries":  countries_names,
-        "popularity": popularity
+        "popularity": popularity,
+        "population": population,
+        "genre": genres,
+        "popularity_by_population": popularity_by_population,
     })
     return df
 
@@ -204,9 +249,55 @@ def fake_bpm_by_country():
 
 # Graphique à points volume / energie.
 def fake_loudness_by_energy():
+
+    top_genres = []
+    genres = everythingData["genres"].values.flatten().tolist()
+    for genrelist in genres:
+        if len(genrelist) >0:
+            genrelist[0] = genrelist[0].replace(" ", "-")
+            words = genrelist[0].split("-")
+            words = [word.capitalize() for word in words]
+            genrelist[0] = "-".join(words)
+            top_genres.append(genrelist[0])
+        else:
+            top_genres.append("no_genre_data")
+
     # Construction du dataframe.
     df = pd.DataFrame({
-        "loudness": topsData["average_loudness"],
-        "energy": topsData["average_energy"]
+        "loudness": everythingData["loudness"],
+        "energy": everythingData["energy"],
+        "title_and_artist": everythingData["title_and_artist"],
+        "genres": top_genres,
+        "loudness_energy_ratio": (round((everythingData["loudness"]+100)* everythingData["energy"]))
+    })
+    return df
+
+
+# Comparaison Genres
+def dual_genre_comparaison():
+    #traitement des noms de genre
+    genres = []
+
+    for genre in genresData['genres']:
+        genre = genre.replace("_", "-")
+        words = genre.split("-")
+        words = [word.capitalize() for word in words]
+        genre = "-".join(words)
+        genres.append(genre)
+    
+    # Construction du dataframe.
+    df = pd.DataFrame({
+        "genre":    genres,
+        "duration": genresData["average_duration"],
+        "formated_duration": genresData["average_formated_duration"],
+        "bpm": genresData["average_BPM"],
+        "key": genresData["top_key"],
+        "danceability": genresData["average_danceability"],
+        "energy":genresData["average_energy"],
+        "speechiness":genresData["average_speechiness"],
+        "acousticness":genresData["average_acousticness"],
+        "instrumentalness":genresData["average_instrumentalness"],
+        "liveness":genresData["average_liveness"],
+        "valence":genresData["average_valence"],
     })
     return df

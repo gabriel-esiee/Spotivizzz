@@ -4,6 +4,7 @@
 
 from dash import html, dcc
 import plotly.express as px
+import statsmodels.api as sm
 from ..utils import api
 
 # Récupération des données.

@@ -8,7 +8,7 @@ footer = html.Div(
     className="footer",
     children=[
         html.P(
-            children="Développé par Clément ZELTER et Gabriel ROULEAU."
+            children="Made with ❤ by Clément ZELTER & Gabriel ROULEAU at ESIEE."
         )
     ]
 )

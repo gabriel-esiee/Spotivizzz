@@ -8,7 +8,7 @@ navbar = html.Div(
     className="navbar",
     children=[
         html.Img(
-            src="/assets/images/header.png"
+            src="/assets/images/spotivizzz_banner.png"
         )
     ]
 )
