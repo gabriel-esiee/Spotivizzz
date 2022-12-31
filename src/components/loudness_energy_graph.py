@@ -8,7 +8,7 @@ from ..utils import api
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_loudness_by_energy()
+df = api.loudness_by_energy()
 fig = px.scatter(
     df,
     x="loudness",

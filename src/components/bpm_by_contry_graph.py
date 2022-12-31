@@ -9,7 +9,7 @@ from ..utils import api
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_bpm_by_country()
+df = api.bpm_by_country()
 fig = px.scatter(
     df,
     x="duration",

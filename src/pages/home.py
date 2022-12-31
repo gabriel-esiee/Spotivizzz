@@ -11,6 +11,14 @@ app_ref = None
 
 # Fonction de création de la page d'accueil.
 def create_home(app):
+    """Create the Home page
+
+    Args:
+        app (Any): the dash app
+
+    Returns:
+        html: the html element
+    """
     app_ref = app
 
     # Construction de tous les éléments HTML de la page.

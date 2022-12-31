@@ -6,6 +6,7 @@ from dash import html, dcc, Input, Output
 import plotly.express as px
 from ..utils import api
 
+
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
 genres_df = api.dual_genre_comparaison()
@@ -13,11 +14,11 @@ genres_df = api.dual_genre_comparaison()
 
 genre = 'pop'
 genre_analysis_values = ['energy',
-                         'speechiness',
-                         'acousticness', 
-                         'instrumentalness', 
-                         'liveness', 
-                         'valence']
+                        'speechiness',
+                        'acousticness', 
+                        'instrumentalness', 
+                        'liveness', 
+                        'valence']
 values = genres_df[genres_df['genre'] == genre][genre_analysis_values].values.tolist()
 
 
@@ -40,13 +41,13 @@ genres_list = api.dual_genre_comparaison()["genre"].to_list()
 genre_1_options=[]
 for item in genres_list:
     genre_dict= {'label': item,
-                 'value': 'genre-1-'+item}
+                'value': 'genre-1-'+item}
     genre_1_options.append(genre_dict)
 
 genre_2_options=[]
 for item in genres_list:
     genre_dict= {'label': item,
-                 'value': 'genre-2-'+item}
+                'value': 'genre-2-'+item}
     genre_2_options.append(genre_dict)
 
 def create_dual_comparaison(app):

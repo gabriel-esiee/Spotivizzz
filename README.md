@@ -1,7 +1,8 @@
 # Spotivizzz ![Build Passing](https://img.shields.io/badge/build-passing-brightgreen?style=plastic) ![License MIT](https://img.shields.io/badge/license-MIT-brightgreen?style=plastic) ![Version](https://img.shields.io/badge/version-v1.0-orange?style=plastic) ![Dependencies](https://img.shields.io/badge/Python-3.7+-yellow?style=plastic) ![release DAte](https://img.shields.io/badge/release_date-december_2022-red?style=plastic)
-<img src="https://github.com/gabriel-esiee/Spotivizzz/blob/master/assets/images/spotivizzz_banner.png"
-     alt="Spotivizzz banner">
-**A music data analysis tool using** [Spotify API](https://developer.spotify.com/documentation/web-api/) 
+<img src="https://github.com/gabriel-esiee/Spotivizzz/blob/master/assets/images/spotivizzz_banner.png" align="center"
+     alt="Spotivizzz banner" width="1920" height="400">
+**A music data analysis tool using** [Spotify API](https://developer.spotify.com/documentation/web-api/)
+
 *by Clément ZELTER & Gabriel ROULEAU (ESIEE - E3FI - Groupe 3)*
 
 ## User Guide
@@ -26,20 +27,24 @@ Vous trouverez dans le dashboard une multitude de graphs informants sur divers s
     - Un nuage de points correlant le volume d'un titre avec son caractère énergétique
     - Un nuage de points correlant le BPM moyen des titres des Top 50 nationaux du monde avec leur durée moyenne et la population du pays en question.
     - Un histogramme présentant la durée moyenne d'un titre en fonction de son genre musical parmis une large selection de genre.
+    - Un histogramme présentant la popularité des genres en fonction des pays, de leur indice de popularité dans ces pays et de la population des pays.
 - Un comparateur de genres
 
 De manière générale, il est possible de double-cliquer sur la légende d'une donnée pour l'isoler. Un second double-clique permet de réinitialiser la vue. Il est également possible de masquer une ou plusieurs données en cliquant une seule fois sur leur légende. Un second clique sur la légende rétablit la donnée dans le graph.
 
 ## Rapport d'analyse
-Nous avons utilisé les données fournit par Spotify pour mettre en évidence des corrélations et rechercher des différences entre les musiques de certains pays ou de certains genres.  
-  
-Nous avons principalement utilisé deux comparaisons pour notre travail : la comparaison de genres et la comparaison entre les pays.  
-  
-Comparer les genres nous as permis de mettre en évidence une différence quant à la durée des morceaux. On remarque ainsi que la musique classique a une durée moyenne de 5 minutes et 43 secondes alors que les morceaux de Pop durent en moyenne 3 minutes 20.  
-  
-Un autre graphique mets en corrélation le volume et son « niveau d’énergie ». On remarque ainsi qu’un volume supérieur vient généralement avec un niveau d’énergie.  
-  
-Comparer les musiques de chaque pays nous a permis de montrer des différences quand au niveau de BPM (battement par minute, qui représente le tempo de d’un morceau) et de durée des morceaux. On remarque alors que les pays d’Asie on généralement des morceaux plus long et que pour certains pays comme la Thaïlande un niveau de BPM plus élevé que le reste du monde. Ces différences montrent un changement de culture (notamment musicale) entre ces régions du monde. Il est aussi intéressant de noter que les durées moyennes des morceaux en europe de l’ouest, en amérique du nord ou en australie sont très proche puisqu’il s’agit tout les trois de civilisations occidentales avec une culture parfois assez proche.
+Le but de ce projet est d'analyser en temps réel les tendances de l'industrie musicale à l'échelle du monde.
+Nous avons pour cela utilisé les données fournies par Spotify afin de mettre en évidence des corrélations que nous jugeons intéressantes et révélatrices.
+
+Nous avons divisé nos champs de recherches en deux principales catégories d'analyse:
+- les tendances musicales en fonction des genres musicaux
+- les tendances musicales en fonction des pays d'écoute
+
+Voici une liste non exhaustive de points qui se dégagent de nos différentes analyses:
+- Il y a une corrélation claire entre l'énergie d'un morceau et son volume. Plus le volume est élevé plus l'énergie l'est également, et inversement.
+- L'Asie de l'Est est friante de musiques aux durées bien plus élevées que la moyenne mondiale, avoisinnant les 4min, là où la moyenne mondiale est plutôt aux alentours des 3min.
+- Le BPM est souvent corrélé avec la durée des titres, mais uniquement en Asie.
+- La Pop et l'Urbano Latino semble dominer le monde de l'industrie musicale mais lorsque l'on rapporte ces données à la population des pays concernés on se rend compte que le Modern Bollywood est en réalité le genre dominant malgré sa présence rarement observée en dehors de l'Inde.
 
 ### Données utilisées
 - Les données relatives aux Top 50 des pays sont récupérées à travers les playlists "Top 50 - [country_name]" générées automatiquement par [Spotify](https://spotify.com/). Example pour la France: [Top 50 - France](https://open.spotify.com/playlist/37i9dQZEVXbIPWwFssbupI?si=5892fcd440b440b3)

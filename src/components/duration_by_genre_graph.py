@@ -69,7 +69,7 @@ long_color_sequence = [ "#6a45c2",
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_duration_by_genre()
+df = api.duration_by_genre()
 fig = px.bar(
     df,
     x="duration",

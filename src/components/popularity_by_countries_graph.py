@@ -69,7 +69,7 @@ long_color_sequence = [ "#6a45c2",
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_popularity_by_countries()
+df = api.popularity_by_countries()
 fig = px.bar(
     df,
     x="genre",

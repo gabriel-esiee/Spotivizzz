@@ -9,7 +9,7 @@ from ..utils import api
 
 # Récupération des données.
 # Les données sont déja traités dans utils/api.py.
-df = api.fake_map_values()
+df = api.map_values()
 fig = px.choropleth(
     df,
     locations="countries_codes",
@@ -125,6 +125,14 @@ long_color_sequence = [ "#88e99a",
 # Fonction de création du graph.
 # La fonction prend aussi en charge les callback.
 def create_map_graph(app):
+    """Create the map graph
+
+    Args:
+        app (Any): the dash app
+
+    Returns:
+        html: the html element
+    """
 
     # Callback lorsque le select change de valeur.
     @app.callback(
@@ -143,7 +151,7 @@ def create_map_graph(app):
             "labels": {"countries_names":   "Pays"},
             
         }
-        df = api.fake_map_values()
+        df = api.map_values()
 
         if (value == "BPMM"):
             config = {

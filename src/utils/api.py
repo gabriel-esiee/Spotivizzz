@@ -1,4 +1,4 @@
-# api.py est reponsable de la récupération des données
+# api.py est reponsable de la récupération des données sur la database Azure
 # et de leur traitement.
 
 import pandas as pd
@@ -6,9 +6,7 @@ import pycountry_convert as pc
 import pypopulation as pp
 from .azure_cosmos_db_linker import get_item_from_azure_database
 
-
 # ID des databases stockés dans Cosmos DB:
-
 id_top_playlists = "0f5cf919-3e2f-470c-a96c-8d64e1c56c51"
 id_genre_playlists = "df6c4fcf-8cb1-4985-9002-aa80c483dc97"
 id_everything_playlist = "e25741cc-bfe3-4fa6-b6c4-948d3410934c"
@@ -25,9 +23,13 @@ everythingData = get_item_from_azure_database("spotivizzz", "everything_playlist
 # de recevoir les données nécéssaire dans le bon format.
 
 # Graphique à barres popularité moyenne par pays.
-def fake_popularity_by_countries():
+def popularity_by_countries():
+    """Get the popularity by countries data
+    Returns:
+        pandas DataFrame: Le dataFrame filtré pour l'utilisation de la fonction
+    """
     # Récupération du nom du pays via le titre de la playlist.
-    # Par exemple, la playlist "Top 50 - France" retourne "France".
+    # Par exemple, la playlist "Top 50 - France" retourne "France"
     playlist_titles = topsData["playlist_name"].values.flatten().tolist()
     playlist_titles.pop(0) # Suppression de la playlist mondiale car seul les pays nous intéressent.
     countries_names = []
@@ -90,7 +92,11 @@ def fake_popularity_by_countries():
     return df
 
 # Graphique carte du monde.
-def fake_map_values():
+def map_values():
+    """Get the worldwide map data
+    Returns:
+        pandas DataFrame: Le dataFrame filtré pour l'utilisation de la fonction
+    """
     # Récupération du nom du pays via le titre de la playlist.
     playlist_titles = topsData["playlist_name"].values.flatten().tolist()
     playlist_titles.pop(0)
@@ -167,8 +173,11 @@ def fake_map_values():
     return df
 
 # Graphique à barres horizontales durée moyenne en fonction du genre.
-def fake_duration_by_genre():
-
+def duration_by_genre():
+    """Get the duration by genre data
+    Returns:
+        pandas DataFrame: Le dataFrame filtré pour l'utilisation de la fonction
+    """
     #traitement des noms de genre
     genres = []
 
@@ -188,7 +197,11 @@ def fake_duration_by_genre():
     return df
 
 # Graphique à points bpm par pays.
-def fake_bpm_by_country():
+def bpm_by_country():
+    """Get the bpm by countries data
+    Returns:
+        pandas DataFrame: Le dataFrame filtré pour l'utilisation de la fonction
+    """
     # Récupération du nom du pays via le titre de la playlist.
     playlist_titles = topsData["playlist_name"].values.flatten().tolist()
     playlist_titles.pop(0) # Delete global playlist
@@ -248,7 +261,11 @@ def fake_bpm_by_country():
     return df
 
 # Graphique à points volume / energie.
-def fake_loudness_by_energy():
+def loudness_by_energy():
+    """Get the loudness by energy data
+    Returns:
+        pandas DataFrame: Le dataFrame filtré pour l'utilisation de la fonction
+    """
 
     top_genres = []
     genres = everythingData["genres"].values.flatten().tolist()
@@ -275,6 +292,10 @@ def fake_loudness_by_energy():
 
 # Comparaison Genres
 def dual_genre_comparaison():
+    """Get the dual genre data
+    Returns:
+        pandas DataFrame: Le dataFrame filtré pour l'utilisation de la fonction
+    """
     #traitement des noms de genre
     genres = []
 
