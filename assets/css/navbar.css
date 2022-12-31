@@ -1,0 +1,13 @@
+/* 
+ * Style rules for the navigation bar.
+*/
+
+.navbar {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    text-align: center;
+}
+
+.navbar img {
+    width: 100%;
+}

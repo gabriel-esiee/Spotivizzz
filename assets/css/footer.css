@@ -1,0 +1,15 @@
+/* 
+ * Style rules for the footer.
+*/
+
+.footer {
+    background-color: #b2aee6;
+    padding: 25px 0;
+}
+
+.footer p {
+    padding: 0 10vw;
+    margin: 0;
+    font-weight: 700;
+    color: white;
+}

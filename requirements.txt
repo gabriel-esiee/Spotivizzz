@@ -1,0 +1,14 @@
+dash
+plotly
+pandas
+pycountry-convert
+azure-core
+azure-cosmos
+certifi
+chardet
+idna
+requests
+six
+urllib3
+pypopulation
+statsmodels
