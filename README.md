@@ -7,7 +7,7 @@
 
 ## User Guide
 ### Installation
-Aprés avoir cloné le projet, installez les dépendances nécéssaires au bon fonctionnement de Spotivizz avec la command suivante:
+Aprés avoir cloné le projet, installez les dépendances nécéssaires au bon fonctionnement de Spotivizzz avec la commande suivante:
 ```bash
 $ python -m pip install -r requirements.txt
 ```
@@ -28,7 +28,7 @@ Vous trouverez dans le dashboard une multitude de graphs informants sur divers s
     - Un nuage de points correlant le BPM moyen des titres des Top 50 nationaux du monde avec leur durée moyenne et la population du pays en question.
     - Un histogramme présentant la durée moyenne d'un titre en fonction de son genre musical parmis une large selection de genre.
     - Un histogramme présentant la popularité des genres en fonction des pays, de leur indice de popularité dans ces pays et de la population des pays.
-- Un comparateur de genres
+- Un comparateur de plus d'une centaines de genres musicaux
 
 De manière générale, il est possible de double-cliquer sur la légende d'une donnée pour l'isoler. Un second double-clique permet de réinitialiser la vue. Il est également possible de masquer une ou plusieurs données en cliquant une seule fois sur leur légende. Un second clique sur la légende rétablit la donnée dans le graph.
 
@@ -54,7 +54,9 @@ Voici une liste non exhaustive de points qui se dégagent de nos différentes an
 ## Developper Guide
 Schéma de l'architecture du code de Spotivizzz:
 [![](https://mermaid.ink/img/pako:eNqdVE1vozAQ_SuWe0mkJAo0AcNhpbRopZV2pdXm1iSKHNsUq2Aj22xLo_z3NYYGkl429QHNjOe9-cJzhERSBmOY5vKVZFgZ8PPPVgB7dHV4VrjMgC6l4Wm915yyzbpVwNoqu9bROXc-q98_Rmcfq-zGYDr91l6XdXdV1rtxC2WCtsJ1SKb-MtVFdLILCKZAVUJw8QykIAxgQHF9nUVZu5AUG7xPmSHZaJNYGXxv5I_Azek9egAWOK811x1m1amfYB9-DkmkLqTe08NmtHqvFAOPzgCSh_FuUOdVjSTnTJi2xkcnXzf1zOuiFJiL0ab5zvoGNqcxdRXopliuyxzXILHaQWJFL5rdJWHqnA2HBlKe5_GdlzxEy8VEGyVfWHxHCOnk6SunJov98u0Tge33DeAhfDCAlmE-T9OU_Hf4y0l8iaJv8Q3wIYFrfouNPHSgt2Svs1uQF43v30dHYdM-4xFCl3jvquj-z_sCergOboLDCSyYsg2jdt8cG9sWmowVbAtjK1KsXrZwK07WD1dGrmtBYGxUxSawKu2sWcKxfToFjFOca2stsYDxEb7B-H45C9HS9xCKfN_zgzCYwBrGizCcRQh5QeSj-cK_R8vTBL5LaSnmsygIIz-wZm_hBcHCd3xP7rINyig3Uv1q96Nbk6d_lQK31Q?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqdVE1vozAQ_SuWe0mkJAo0AcNhpbRopZV2pdXm1iSKHNsUq2Aj22xLo_z3NYYGkl429QHNjOe9-cJzhERSBmOY5vKVZFgZ8PPPVgB7dHV4VrjMgC6l4Wm915yyzbpVwNoqu9bROXc-q98_Rmcfq-zGYDr91l6XdXdV1rtxC2WCtsJ1SKb-MtVFdLILCKZAVUJw8QykIAxgQHF9nUVZu5AUG7xPmSHZaJNYGXxv5I_Azek9egAWOK811x1m1amfYB9-DkmkLqTe08NmtHqvFAOPzgCSh_FuUOdVjSTnTJi2xkcnXzf1zOuiFJiL0ab5zvoGNqcxdRXopliuyxzXILHaQWJFL5rdJWHqnA2HBlKe5_GdlzxEy8VEGyVfWHxHCOnk6SunJov98u0Tge33DeAhfDCAlmE-T9OU_Hf4y0l8iaJv8Q3wIYFrfouNPHSgt2Svs1uQF43v30dHYdM-4xFCl3jvquj-z_sCergOboLDCSyYsg2jdt8cG9sWmowVbAtjK1KsXrZwK07WD1dGrmtBYGxUxSawKu2sWcKxfToFjFOca2stsYDxEb7B-H45C9HS9xCKfN_zgzCYwBrGizCcRQh5QeSj-cK_R8vTBL5LaSnmsygIIz-wZm_hBcHCd3xP7rINyig3Uv1q96Nbk6d_lQK31Q)
-Le projet est structuré en plusieurs sous-dossiers qui ont chacun leurs fonctions propres.
+La majeure partie du traitement des données recueillies depuis l'API de Spotify (en passant par le wrapper python Spotipy) est faite sur un serveur, une fois par jour, puis elles sont envoyées, traitées et nettoyées, sur une database NoSQL (Azure Cosmos DB). L'app python Spotivizzz récupère ensuite les données stockées sur la database Azure Cosmos pour les mettre en images via les modules plotly et dash.
+
+Le projet est structuré en plusieurs sous-dossiers qui ont chacun leurs fonctions propres:
 
 ### /
 - A la racine se trouvent les fichiers utiles tels que la `LICENSE`, `requirements.txt` pour les dépendances ou le script d'entrée `main.py`.
